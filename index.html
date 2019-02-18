@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>80's Word Guess Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+    <div class="headBar">
+        <img id="banner" src="assets/images/2-WordGuess.jpg" alt="header image">
+    </div>
+    <main class="container text-white">
+        <div class="row">
+            <div class="col-sm-1 col-md-3 col-lg-3"></div>
+            <div class="col-sm-10 col-md-6 col-lg-6 content">
+                <div class="row">
+                    <div class="col-6">
+                        <img id="80" src="assets/images/80's game.jpg" alt="80's word game" width= 90%>
+                        <br><br>
+                        <p class="msg"></p>
+                    </div>
+                    <!-- This is the gameplay area: -->
+                    <div class="col-6">
+                        <p>Press any key to get started!</p>
+                        <div class="resultArea">
+                            <p>Wins: <span id="win"></span></p> 
+                        </div>
+                        <div class="currentArea">
+                            <p>Current Word:</p>
+                            <p class="placeholder"></p>
+                        </div>
+                        <div class="numberArea">
+                            <p>Number of guesses remaining:</p>
+                            <p class="number">15</p>
+                        </div>
+                        <div class="guessedArea">
+                            <p>Letters already guessed:</p>
+                            <p class="guessed"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-md-3 col-lg-3"></div>
+        </div>
+    </main>
+
+    
+
+
+    <script src="assets/javascripts/game.js"></script>
+</body>
+</html>
