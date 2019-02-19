@@ -1,7 +1,6 @@
 var library = ["bike", "monster", "question", "fund", "consumer"];
-
-document.onkeyup = function game(randomword) {
-    var win = 0;
+var win = 0;
+document.onkeyup = function game() {
     var guess = 0;
     var blanket = [];
     var guessed = [];
@@ -24,8 +23,8 @@ document.onkeyup = function game(randomword) {
     console.log(blanket);
     console.log(word.length);
     document.querySelector(".placeholder").innerHTML = blanket.join('');
-    // Time to guess
 
+    // Time to guess
     
     document.onkeyup = function (guessletter) {
         guess += 1;
@@ -39,8 +38,27 @@ document.onkeyup = function game(randomword) {
         if(guess >15){
             game();
         }
-    }
 
+        if(word.indexOf(letter) != -1){
+            var index = word.indexOf(letter);
+            blanket.splice(index,1,letter);
+            document.querySelector(".placeholder").innerHTML = blanket.join('');
+            console.log(blanket.indexOf(" _"));
+
+            if(blanket.indexOf(" _") < 0){
+                // ???????(If I replace <0 with = -1, it wont work, why????)
+                document.querySelector(".msg").innerHTML = "You got it! Press space to continue."
+                win ++;
+                document.querySelector("#win").innerHTML = win;
+                // document.onkeyup = game();
+            }
+        }
+
+        if(letter === " "){
+            game();
+        }
+
+    }
     console.log("test:" + guess);
 
 
