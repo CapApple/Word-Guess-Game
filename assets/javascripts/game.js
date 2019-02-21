@@ -1,14 +1,17 @@
-var library = ["bike", "monster", "question", "fund", "consumer"];
+var library = ["bike", "monster", "question", "fund", "consumer", "monopoly"];
 var win = 0;
+
 document.onkeyup = function game() {
     var guess = 0;
     var blanket = [];
     var guessed = [];
+    var success = false;
     //reset
     document.querySelector(".msg").innerHTML = null;
     document.querySelector('.number').innerHTML = 15;
     document.querySelector(".placeholder").innerHTML = null;
     document.querySelector(".guessed").innerHTML = null;
+    document.querySelector("#audio").innerHTML = null;
 
     // randomly pick a word from library
     var random = library[Math.floor(Math.random() * library.length)];
@@ -40,23 +43,33 @@ document.onkeyup = function game() {
         }
 
         if(word.indexOf(letter) != -1){
-            var index = word.indexOf(letter);
-            blanket.splice(index,1,letter);
+            // calculate the indexes of letter and replace " _" with letter at the same index
+            for (var i = 0; i < word.length; i++) {
+                var index = word.indexOf(letter, i);
+                if(index != -1){
+                    blanket.splice(index, 1, " " + letter);
+                }
+            }
             document.querySelector(".placeholder").innerHTML = blanket.join('');
-            console.log(blanket.indexOf(" _"));
 
+            console.log(blanket.indexOf(" _"));
+            
+
+            // When there is no more " _" in the blanket Array, success
             if(blanket.indexOf(" _") < 0){
-                // ???????(If I replace <0 with = -1, it wont work, why????)
                 document.querySelector(".msg").innerHTML = "You got it! Press space to continue."
                 win ++;
+                success = true;
                 document.querySelector("#win").innerHTML = win;
-                // document.onkeyup = game();
+              
+                document.querySelector("#audio").innerHTML = "<audio control autoplay> <source src = \"assets/audio/happykids.mp3\" type=\"audio/mpeg\"></audio>";
+                // game();
+                window.setTimeout(game, 3000); 
             }
         }
-
-        if(letter === " "){
-            game();
-        }
+        
+        
+      
 
     }
     console.log("test:" + guess);
