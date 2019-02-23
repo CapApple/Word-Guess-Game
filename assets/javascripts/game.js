@@ -57,14 +57,14 @@ document.onkeyup = function game() {
 
             // When there is no more " _" in the blanket Array, success
             if(blanket.indexOf(" _") < 0){
-                document.querySelector(".msg").innerHTML = "You got it! Press space to continue."
+                // document.querySelector(".msg").innerHTML = "You got it! Press space to continue."
                 win ++;
-                success = true;
+                // success = true;
                 document.querySelector("#win").innerHTML = win;
               
                 document.querySelector("#audio").innerHTML = "<audio control autoplay> <source src = \"assets/audio/happykids.mp3\" type=\"audio/mpeg\"></audio>";
                 // game();
-                window.setTimeout(game, 3000); 
+                window.setTimeout(game , 3000); 
             }
         }
         
